@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+ <context:annotation-config />
+ <context:component-scan base-package="com.ex.dao, com.ex.dao_v1" />
+ <context:property-placeholder location="classpath:dbinfo.properties" />
+ <bean id="myDataSource_v1"
+  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value="${ex.jdbc.classname}" />
+  <property name="url" value="${ex.jdbc.url}" />
+  <property name="username" value="${ex.jdbc.username}" />
+  <property name="password" value="${ex.jdbc.password}" />
+ </bean>
+ <bean id="myDataSource"
+  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value="${ex.v2.jdbc.classname}" />
+  <property name="url" value="${ex.v2.jdbc.url}" />
+  <property name="username" value="${ex.v2.jdbc.username}" />
+  <property name="password" value="${ex.v2.jdbc.password}" />
+ </bean>
+</beans>
